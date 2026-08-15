@@ -4,7 +4,8 @@
   "description": "API REST para consulta de CEP e preenchimento automático de endereços no sistema Help Med CWB.",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "test": "jest"
   },
   "keywords": [
     "helpmed",
@@ -13,5 +14,12 @@
     "nodejs"
   ],
   "author": "Maikel Zanchi",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.2.2"
+  }
 }
