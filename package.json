@@ -1,0 +1,17 @@
+{
+  "name": "helpmed-api-cep",
+  "version": "1.0.0",
+  "description": "API REST para consulta de CEP e preenchimento automático de endereços no sistema Help Med CWB.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "keywords": [
+    "helpmed",
+    "api",
+    "cep",
+    "nodejs"
+  ],
+  "author": "Maikel Zanchi",
+  "license": "MIT"
+}
