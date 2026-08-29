@@ -1,0 +1,42 @@
+name: CD - HelpMed API CEP
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  validar-deploy:
+    name: Validar deployment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar codigo do repositorio
+        uses: actions/checkout@v5
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Executar testes antes do deploy
+        run: npm test
+
+  deploy:
+    name: Deploy Render
+    needs: validar-deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Acionar deploy no Render
+        run: curl -f -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
